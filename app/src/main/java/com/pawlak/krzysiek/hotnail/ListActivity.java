@@ -31,8 +31,6 @@ public class ListActivity extends AppCompatActivity implements AsyncResponse, Ad
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -40,12 +38,8 @@ public class ListActivity extends AppCompatActivity implements AsyncResponse, Ad
             public void onClick(View view) {
                 Intent in = new Intent(getApplicationContext(), PhotoActivity.class);
                 startActivity(in);
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
             }
         });
-
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ImageLoader.getInstance().init(UILConfig.config(ListActivity.this));
 
@@ -61,19 +55,6 @@ public class ListActivity extends AppCompatActivity implements AsyncResponse, Ad
 
 
         BindDictionary<Product> dict = new BindDictionary<Product>();
-//        dict.addStringField(R.id.tvName, new StringExtractor<Product>() {
-//            @Override
-//            public String getStringValue(Product product, int position) {
-//                return product.image_name;
-//            }
-//        });
-
-//        dict.addStringField(R.id.tvPrice, new StringExtractor<Product>() {
-//            @Override
-//            public String getStringValue(Product product, int position) {
-//                return "" + product.data_add;
-//            }
-//        });
 
         dict.addStringField(R.id.tvRate, new StringExtractor<Product>() {
             @Override

@@ -65,8 +65,6 @@ public class PhotoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
 
         final CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id
                 .coordinatorLayout);
@@ -80,7 +78,6 @@ public class PhotoActivity extends AppCompatActivity {
         ivGallery = (ImageView) findViewById(R.id.ivGallery);
         ivUpload = (ImageView) findViewById(R.id.ivUpload);
         ivImage = (ImageView) findViewById(R.id.ivImage);
-//        ivCamera = (ImageView) findViewById(R.id.ivCamera);
         ivCameraOld = (ImageView) findViewById(R.id.ivCameraOld);
         etImage = (EditText) findViewById(R.id.etImage);
 
@@ -93,19 +90,6 @@ public class PhotoActivity extends AppCompatActivity {
                 startActivityForResult(in, GALLERY_REQUEST);
             }
         });
-
-//        ivCamera.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                try {
-//                    startActivityForResult(cameraPhoto.takePhotoIntent(), CAMERA_REQUEST);
-//                    cameraPhoto.addToGallery();
-//                } catch (IOException e) {
-//                    Toast.makeText(getApplicationContext(), "Something Wrong while taking photos",
-//                            Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
 
         ivCameraOld.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -151,7 +135,6 @@ public class PhotoActivity extends AppCompatActivity {
                     StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-//                            Toast.makeText(getApplicationContext(), response, Toast.LENGTH_SHORT).show();
                             finish();
                         }
                     }, new Response.ErrorListener() {
@@ -198,7 +181,6 @@ public class PhotoActivity extends AppCompatActivity {
                 selectedPhoto = photoPath;
                 try {
                     Bitmap bitmap = ImageLoader.init().from(photoPath).requestSize(220, 220).getBitmap();
-//                        ivImage.setImageBitmap(getRotatedBitmap(bitmap, 90));
                     ivImage.setImageBitmap(bitmap);
                 } catch (FileNotFoundException e) {
                     Snackbar snackbar = Snackbar
@@ -223,22 +205,6 @@ public class PhotoActivity extends AppCompatActivity {
                     snackbar.show();
                 }
             } // end read
-
-            // not working on real device
-//            else if (requestCode == CAMERA_REQUEST) {
-//                String photoPath = cameraPhoto.getPhotoPath();
-//                selectedPhoto = photoPath;
-//                Toast.makeText(getApplicationContext(), "string: " + photoPath,
-//                        Toast.LENGTH_SHORT).show();
-//                try {
-//                    Bitmap bitmap = ImageLoader.init().from(photoPath).requestSize(220, 220).getBitmap();
-////                        ivImage.setImageBitmap(getRotatedBitmap(bitmap, 90));
-//                    ivImage.setImageBitmap(bitmap);
-//                } catch (FileNotFoundException e) {
-//                    Toast.makeText(getApplicationContext(), "Something Wrong while loading photos",
-//                            Toast.LENGTH_SHORT).show();
-//                }
-//            }
         } // end checking result code
     } // end for result
 

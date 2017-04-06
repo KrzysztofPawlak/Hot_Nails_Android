@@ -42,8 +42,6 @@ public class DetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
 
         // get email to look how vote user
         SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
@@ -51,8 +49,6 @@ public class DetailActivity extends AppCompatActivity {
 
         final CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id
                 .coordinatorLayout);
-
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         ImageLoader.getInstance().init(UILConfig.config(DetailActivity.this));
 
@@ -71,7 +67,6 @@ public class DetailActivity extends AppCompatActivity {
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
-//                Toast.makeText(getApplicationContext(), String.valueOf(rating), Toast.LENGTH_SHORT).show();
                 rat = (int) rating;
             }
         });
@@ -83,9 +78,6 @@ public class DetailActivity extends AppCompatActivity {
             public void onResponse(String response) {
                 yet = response; // tmp for checking you already vote on it
                 if (response.contains("null")) {
-//                    Snackbar snackbar = Snackbar
-//                            .make(coordinatorLayout, "you voted on it", Snackbar.LENGTH_LONG);
-//                    snackbar.show();
                     ratingBar.setRating(0);
                 } else if (response.contains("1")) {
                     ratingBar.setRating(1);
@@ -138,7 +130,7 @@ public class DetailActivity extends AppCompatActivity {
         };
         requestQueue.add(request);
 
-    // vote send/update button
+        // vote send/update button
         btnVote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

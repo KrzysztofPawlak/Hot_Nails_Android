@@ -63,17 +63,7 @@ public class MyStats extends AppCompatActivity implements AdapterView.OnItemClic
         SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         final String email = getPrefs.getString("email", "empty");
 
-//        ActionBar actionBar = getSupportActionBar();
-//        actionBar.setDisplayHomeAsUpEnabled(true);
-
-//        onCreateOptionsMenu()
-
-//        getSupportActionBar().setIcon(R.drawable.logout);
-
         ImageLoader.getInstance().init(UILConfig.config(MyStats.this));
-
-//        PostResponseAsyncTask taskRead = new PostResponseAsyncTask(MyStats.this, this);
-//        taskRead.execute("http://votenails.pe.hu/product.php");
 
         requestQueue = Volley.newRequestQueue(this);
         final Product product = (Product) getIntent().getSerializableExtra("product");
@@ -86,21 +76,8 @@ public class MyStats extends AppCompatActivity implements AdapterView.OnItemClic
 
             @Override
             public void onResponse(String response) {
-//                Toast.makeText(MyStats.this, response, Toast.LENGTH_LONG).show();
                 productsList = new JsonConverter<Product>().toArrayList(response, Product.class);
                 BindDictionary<Product> dict = new BindDictionary<Product>();
-
-//                dict.addStringField(R.id.tvRate, new StringExtractor<Product>() {
-//                    @Override
-//                    public String getStringValue(Product product, int position) {
-//                        String a = "" + product.avg;
-//                        if (a.contains("null")) {
-//                            a = "0.000";
-//                        }
-//                        String b = a.substring(0, 3);
-//                        return b + " / 5.0";
-//                    }
-//                });
 
                 dict.addDynamicImageField(R.id.ivImage, new StringExtractor<Product>() {
                     @Override
@@ -127,7 +104,6 @@ public class MyStats extends AppCompatActivity implements AdapterView.OnItemClic
 //
                 lvProduct = (ListView) findViewById(R.id.lvProduct);
                 lvProduct.setAdapter(adapter);
-//                lvProduct.setOnItemClickListener(this);
             }
         }, new Response.ErrorListener() {
             @Override
@@ -168,7 +144,6 @@ public class MyStats extends AppCompatActivity implements AdapterView.OnItemClic
             savePreferences("password", "empty");
             startActivity(in);
             finish();
-//            Toast.makeText(this, "Try Again", Toast.LENGTH_LONG).show();
 
             return true;
         }
@@ -183,58 +158,6 @@ public class MyStats extends AppCompatActivity implements AdapterView.OnItemClic
         checkbox.putString(key, value);
         checkbox.commit();
     }
-
-//    @Override
-//    public void processFinish(String s) {
-//        productsList = new JsonConverter<Product>().toArrayList(s, Product.class);
-//
-//        BindDictionary<Product> dict = new BindDictionary<Product>();
-////        dict.addStringField(R.id.tvName, new StringExtractor<Product>() {
-////            @Override
-////            public String getStringValue(Product product, int position) {
-////                return product.image_name;
-////            }
-////        });
-//
-////        dict.addStringField(R.id.tvPrice, new StringExtractor<Product>() {
-////            @Override
-////            public String getStringValue(Product product, int position) {
-////                return "" + product.data_add;
-////            }
-////        });
-//
-//        dict.addStringField(R.id.tvRate, new StringExtractor<Product>() {
-//            @Override
-//            public String getStringValue(Product product, int position) {
-//                String a = "" + product.avg;
-//                if (a.contains("null")) {
-//                    a = "0.000";
-//                }
-//                String b = a.substring(0, 3);
-//                return b + " / 5.0";
-//            }
-//        });
-//
-//        dict.addDynamicImageField(R.id.ivImage, new StringExtractor<Product>() {
-//            @Override
-//            public String getStringValue(Product product, int position) {
-//                return product.url;
-//            }
-//        }, new DynamicImageLoader() {
-//            @Override
-//            public void loadImage(String url, ImageView imageView) {
-//                ImageLoader.getInstance().displayImage(url, imageView);
-//                imageView.setPadding(0, 0, 0, 0);
-//                imageView.setAdjustViewBounds(true);
-//            }
-//        });
-//
-//        adapter = new FunDapter<>(MyStats.this, productsList, R.layout.layout_list, dict);
-//
-//        lvProduct = (ListView) findViewById(R.id.lvProduct);
-//        lvProduct.setAdapter(adapter);
-//        lvProduct.setOnItemClickListener(this);
-//    }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

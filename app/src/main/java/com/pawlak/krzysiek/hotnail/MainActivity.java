@@ -18,12 +18,6 @@ public class MainActivity extends TabActivity {
         TabHost.TabSpec spec, spec2, spec3, spec4;
         Intent intent;
 
-//        intent = new Intent(this, PhotoActivity.class);
-//        spec = mTabHost.newTabSpec("photos")
-//                .setIndicator("photo up")
-//                .setContent(intent);
-//        mTabHost.addTab(spec);
-
         intent = new Intent(this, ListActivity.class);
         spec2 = mTabHost.newTabSpec("bebe")
                 .setIndicator("hot")

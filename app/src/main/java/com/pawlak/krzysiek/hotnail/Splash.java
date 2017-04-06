@@ -41,22 +41,8 @@ public class Splash extends Activity {
             SharedPreferences getPrefs = PreferenceManager
             .getDefaultSharedPreferences(this);
     SharedPreferences.Editor checkbox = getPrefs.edit();
-//
-//        if (checkbox == null) {
-//            savePreferences("email", "dziablak@wp.pl");
-//            savePreferences("password", "kris");
-//        }
-//        savePreferences("email", "dziablak@wp.pl");
-//        savePreferences("password", "kris");
 
         requestQueue = Volley.newRequestQueue(this);
-
-        // clear pref
-//        SharedPreferences sharedPreferences = PreferenceManager
-//                .getDefaultSharedPreferences(this);
-//        SharedPreferences.Editor checkbox = sharedPreferences.edit();
-//        checkbox.clear();
-//        checkbox.commit();
 
         Thread timer = new Thread(){
             public void run(){
@@ -72,7 +58,6 @@ public class Splash extends Activity {
                     e.printStackTrace();
                 }finally{
                     loginAlready();
-//                    cameraRepair();
                     finish();
 
                 }
@@ -100,12 +85,10 @@ public class Splash extends Activity {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     if (!response.contains("empty") && jsonObject.names().get(0).equals("success")) {
-//                        Toast.makeText(getApplicationContext(), "SUCCESS " + jsonObject.getString("success"), Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(Splash.this, MainActivity.class);
                         startActivity(intent);
                         finish();
                     } else {
-//                        Toast.makeText(getApplicationContext(), "Error " + jsonObject.getString("error"), Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(Splash.this, LoginSignActivity.class);
                         startActivity(intent);
                         finish();

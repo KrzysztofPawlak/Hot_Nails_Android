@@ -126,8 +126,6 @@ public class testChart extends AppCompatActivity {
             }
         });
 
-//        addData();
-
         Legend l  = mChart.getLegend();
         l.setPosition(Legend.LegendPosition.RIGHT_OF_CHART);
         l.setXEntrySpace(7);
