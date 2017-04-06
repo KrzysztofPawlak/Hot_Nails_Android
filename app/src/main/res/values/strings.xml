@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">HOT Nails</string>
+    <string name="action_settings">Logout</string>
+    <string name="title_activity_list">ListActivity</string>
+    <string name="title_activity_detail">DetailActivity</string>
+    <string name="title_activity_insert">InsertActivity</string>
+    <string name="title_activity_my_panel">MyPanel</string>
+    <string name="title_activity_test_chart">testChart</string>
+</resources>
