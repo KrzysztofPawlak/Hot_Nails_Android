@@ -79,6 +79,7 @@ public class ListActivity extends AppCompatActivity implements AsyncResponse, Ad
                 ImageLoader.getInstance().displayImage(url, imageView);
                 imageView.setPadding(0, 0, 0, 0);
                 imageView.setAdjustViewBounds(true);
+                imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
             }
         });
 

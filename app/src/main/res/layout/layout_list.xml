@@ -4,31 +4,37 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/img_height_list"
         android:id="@+id/ivImage"
         android:src="@android:drawable/star_big_on"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Large Text"
-        android:id="@+id/tvRate"
+        android:orientation="horizontal"
         android:layout_below="@id/ivImage"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="76dp" />
+        android:gravity="center">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:src="@drawable/star"
+            android:layout_alignTop="@+id/tvRate"
+            android:layout_toLeftOf="@+id/tvRate"
+            android:layout_toStartOf="@+id/tvRate" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:src="@drawable/star"
-        android:layout_alignTop="@+id/tvRate"
-        android:layout_toLeftOf="@+id/tvRate"
-        android:layout_toStartOf="@+id/tvRate" />
+        <TextView
+            android:textColor="@color/white"
+            android:paddingLeft="@dimen/gap_img_data"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/tvRate" />
+
+    </LinearLayout>
 
 </RelativeLayout>
