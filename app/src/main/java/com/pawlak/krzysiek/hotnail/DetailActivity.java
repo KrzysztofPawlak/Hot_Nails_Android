@@ -185,6 +185,9 @@ public class DetailActivity extends AppCompatActivity {
             ivImage.setPadding(0, 0, 0, 0);
             ivImage.setAdjustViewBounds(true);
         }
+//        getSupportActionBar().setTitle("Back to Menu");
+//        getSupportActionBar().setHomeButtonEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override

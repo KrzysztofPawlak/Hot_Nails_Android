@@ -164,6 +164,10 @@ public class PhotoActivity extends AppCompatActivity {
                 myCommand.execute();
             }
         });
+
+        getSupportActionBar().setTitle("Back to Menu");
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
