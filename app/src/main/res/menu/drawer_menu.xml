@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/hot"
+            android:icon="@drawable/ic_whatshot"
+            android:title="Hot" />
+
+        <item
+            android:id="@+id/latest"
+            android:icon="@drawable/ic_new_releases"
+            android:title="Latest" />
+
+        <item
+            android:id="@+id/stats"
+            android:icon="@drawable/ic_insert_chart"
+            android:title="My stats" />
+    </group>
+
+</menu>

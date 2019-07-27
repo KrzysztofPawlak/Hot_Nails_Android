@@ -63,12 +63,6 @@ public class Splash extends Activity {
         timer.start();
     }
 
-    public void cameraRepair() {
-        Intent intent = new Intent(Splash.this, MainActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
     public void loginAlready() { // checking log in/out from pref
 
         // take email and password from pref
@@ -82,10 +76,12 @@ public class Splash extends Activity {
                 try {
                     JSONObject jsonObject = new JSONObject(response);
                     if (!response.contains("empty") && jsonObject.names().get(0).equals("success")) {
+                        System.out.println("success");
                         Intent intent = new Intent(Splash.this, MainActivity.class);
                         startActivity(intent);
                         finish();
                     } else {
+                        System.out.println("login");
                         Intent intent = new Intent(Splash.this, LoginSignActivity.class);
                         startActivity(intent);
                         finish();
