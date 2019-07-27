@@ -3,9 +3,9 @@ package com.pawlak.krzysiek.hotnail;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -32,8 +32,8 @@ public class DetailActivity extends AppCompatActivity {
     Button btnVote;
 
     private RequestQueue requestQueue;
-    private static final String URL = "http://sunpatrol.pe.hu/vreq.php";
-    private static final String URL2 = "http://sunpatrol.pe.hu/insert.php";
+    private static final String URL = API_URL.SERVER + "vreq.php";
+    private static final String URL2 = API_URL.SERVER + "insert.php";
     private StringRequest request;
     private int rat;
     private String yet;

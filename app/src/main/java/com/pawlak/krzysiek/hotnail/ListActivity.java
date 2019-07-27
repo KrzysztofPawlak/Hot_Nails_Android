@@ -2,8 +2,8 @@ package com.pawlak.krzysiek.hotnail;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -21,11 +21,14 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import static com.pawlak.krzysiek.hotnail.API_URL.SERVER;
+
 public class ListActivity extends AppCompatActivity implements AsyncResponse, AdapterView.OnItemClickListener {
 
     private ArrayList<Product> productsList;
     private ListView lvProduct;
     private FunDapter<Product> adapter;
+    private static final String URL = SERVER + "/product.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +47,7 @@ public class ListActivity extends AppCompatActivity implements AsyncResponse, Ad
         ImageLoader.getInstance().init(UILConfig.config(ListActivity.this));
 
         PostResponseAsyncTask taskRead = new PostResponseAsyncTask(ListActivity.this, this);
-        taskRead.execute("http://sunpatrol.pe.hu/product.php");
+        taskRead.execute(URL);
 
         lvProduct = (ListView) findViewById(R.id.lvProduct);
 

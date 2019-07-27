@@ -15,9 +15,6 @@ import com.nostra13.universalimageloader.utils.StorageUtils;
 
 import java.io.File;
 
-/**
- * Created by krzysiek on 23.05.16.
- */
 public class UILConfig {
 
     public static ImageLoaderConfiguration config(Context context) {

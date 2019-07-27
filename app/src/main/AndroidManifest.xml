@@ -38,7 +38,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.pawlak.krzysiek.hotnail.LoginActivity" />
+                android:value="com.pawlak.krzysiek.hotnail.LoginSignActivity" />
         </activity>
 
         <activity
@@ -54,7 +54,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.pawlak.krzysiek.hotnail.com.pawlak.krzysiek.hotnail.ListActivity" />
+                android:value="com.pawlak.krzysiek.hotnail.ListActivity" />
         </activity>
 
         <activity android:name="com.pawlak.krzysiek.hotnail.PhotoActivity" />
@@ -78,7 +78,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.pawlak.krzysiek.hotnail.com.pawlak.krzysiek.hotnail.LoginSignActivity" />
+                android:value="com.pawlak.krzysiek.hotnail.LoginSignActivity" />
         </activity>
 
         <activity

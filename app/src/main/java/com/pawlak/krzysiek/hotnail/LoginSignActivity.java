@@ -2,10 +2,11 @@ package com.pawlak.krzysiek.hotnail;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,15 +25,21 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
+
+import static com.pawlak.krzysiek.hotnail.API_URL.SERVER;
 
 public class LoginSignActivity extends AppCompatActivity {
 
     private EditText email, password;
     private Button sign_in_register;
     private RequestQueue requestQueue;
-    private static final String URL = "http://sunpatrol.pe.hu/user_control.php";
+
+    private static final String URL = SERVER + "/user_control.php";
     private StringRequest request;
 
     @Override

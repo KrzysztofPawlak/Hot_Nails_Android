@@ -2,8 +2,8 @@ package com.pawlak.krzysiek.hotnail;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
@@ -29,10 +29,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.pawlak.krzysiek.hotnail.API_URL.SERVER;
+
 public class testChart extends AppCompatActivity {
 
     private RequestQueue requestQueue;
-    private static final String URL = "http://sunpatrol.pe.hu/rchart.php";
+    private static final String URL = SERVER + "/rchart.php";
+
     private StringRequest request;
     public float rate1, rate2, rate3, rate4, rate5;
     private ArrayList<Points> pointsImage; // Points your images

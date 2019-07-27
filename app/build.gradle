@@ -1,13 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "25.0.1"
+    compileSdkVersion 28
 
     defaultConfig {
         applicationId "com.pawlak.krzysiek.hotnail"
-        minSdkVersion 15
-        targetSdkVersion 23
+        minSdkVersion 19
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
     }
@@ -20,17 +19,11 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.2.0'
-    compile 'com.android.support:design:23.2.0'
-    compile files('libs/GenAsync.1.2.jar')
-    compile files('libs/gson-2.2.4.jar')
-    compile files('libs/KGJsonConverter.jar')
-    compile 'com.github.amigold.fundapter:library:1.0'
-    compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
-    compile files('libs/volley.jar')
-    compile files('libs/PhotoUtil.jar')
-    compile files('libs/mpandroidchartlibrary-2-2-4.jar')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'com.github.amigold.fundapter:library:1.0'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 }

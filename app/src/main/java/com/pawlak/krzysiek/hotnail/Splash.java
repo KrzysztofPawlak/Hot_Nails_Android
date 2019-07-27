@@ -21,16 +21,13 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by Krzysiek on 2016-01-12.
- */
-
+import static com.pawlak.krzysiek.hotnail.API_URL.SERVER;
 
 public class Splash extends Activity {
 
     boolean flaga;
     private RequestQueue requestQueue;
-    private static final String URL = "http://sunpatrol.pe.hu/user_control.php";
+    private static final String URL = SERVER + "/user_control.php";
     private StringRequest request;
 
     @Override
@@ -56,7 +53,7 @@ public class Splash extends Activity {
                     }
                 } catch (InterruptedException e){
                     e.printStackTrace();
-                }finally{
+                } finally{
                     loginAlready();
                     finish();
 
@@ -94,7 +91,7 @@ public class Splash extends Activity {
                         finish();
                     }
                 } catch (JSONException e) {
-
+                    System.out.println(e.getCause());
                 }
             }
         }, new Response.ErrorListener() {

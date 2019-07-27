@@ -12,9 +12,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -36,6 +36,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.pawlak.krzysiek.hotnail.API_URL.SERVER;
+
 public class PhotoActivity extends AppCompatActivity {
 
     final int GALLERY_REQUEST = 1200;
@@ -48,6 +50,8 @@ public class PhotoActivity extends AppCompatActivity {
     byte[] BYTE; // for compress
     ByteArrayOutputStream bytearrayoutputstream; // for compress
     ArrayList<String> imageList = new ArrayList<>();
+
+    private static final String URL = SERVER + "/upload.php";
 
     String selectedPhoto;
 
@@ -66,8 +70,7 @@ public class PhotoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo);
 
-        final CoordinatorLayout coordinatorLayout = (CoordinatorLayout) findViewById(R.id
-                .coordinatorLayout);
+        final CoordinatorLayout coordinatorLayout = findViewById(R.id.coordinatorLayout);
 
         SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
         final String email = getPrefs.getString("email", "empty");
@@ -130,9 +133,7 @@ public class PhotoActivity extends AppCompatActivity {
 
                     final String encodedString = ImageBase64.encode(bitmap);
 
-                    String url = "http://sunpatrol.pe.hu/upload.php";
-
-                    StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+                    StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
                             finish();
