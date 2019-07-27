@@ -7,19 +7,23 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.pawlak.krzysiek.hotnail.model.User;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 import static com.pawlak.krzysiek.hotnail.API_URL.SERVER;
 
@@ -27,13 +31,21 @@ public class Splash extends Activity {
 
     boolean flaga;
     private RequestQueue requestQueue;
-    private static final String URL = SERVER + "/user_control.php";
+    private static final String URL = SERVER + "user_control.php";
     private StringRequest request;
+    private HotNailService hotNailService;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash);
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(SERVER)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        hotNailService = retrofit.create(HotNailService.class);
 
             SharedPreferences getPrefs = PreferenceManager
             .getDefaultSharedPreferences(this);
@@ -70,41 +82,45 @@ public class Splash extends Activity {
         final String email = getPrefs.getString("email", "empty");
         final String password = getPrefs.getString("password", "empty");
 
-        request = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+        User user = new User(email, password);
+
+        Map<String, String> fields = new HashMap<>();
+        fields.put("email", email);
+        fields.put("password", password);
+
+        Call<ResponseBody> call = hotNailService.logIn(email, password);
+
+        call.enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(String response) {
-                try {
-                    JSONObject jsonObject = new JSONObject(response);
-                    if (!response.contains("empty") && jsonObject.names().get(0).equals("success")) {
-                        System.out.println("success");
-                        Intent intent = new Intent(Splash.this, MainActivity.class);
-                        startActivity(intent);
-                        finish();
-                    } else {
-                        System.out.println("login");
-                        Intent intent = new Intent(Splash.this, LoginSignActivity.class);
-                        startActivity(intent);
-                        finish();
+            public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
+                if(response.isSuccessful()) {
+                    try {
+                        String result = response.body().string();
+                        JSONObject jsonObject = new JSONObject(result);
+
+                        if (jsonObject.names().get(0).equals("success")) {
+                            Intent intent = new Intent(Splash.this, MainActivity.class);
+                            startActivity(intent);
+                            finish();
+                        } else {
+                            System.out.println("login");
+                            Intent intent = new Intent(Splash.this, LoginSignActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
-                } catch (JSONException e) {
-                    System.out.println(e.getCause());
                 }
             }
-        }, new Response.ErrorListener() {
+
             @Override
-            public void onErrorResponse(VolleyError error) {
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
 
             }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                HashMap<String, String> hashMap = new HashMap<String, String>();
-                hashMap.put("email", email);
-                hashMap.put("password", password);
-                return hashMap;
-            }
-        };
-        requestQueue.add(request);
+        });
     }
 
     private void savePreferences(String key, String value) {
