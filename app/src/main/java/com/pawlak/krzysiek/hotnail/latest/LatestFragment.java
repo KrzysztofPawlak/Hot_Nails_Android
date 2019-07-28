@@ -1,4 +1,4 @@
-package com.pawlak.krzysiek.hotnail;
+package com.pawlak.krzysiek.hotnail.latest;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.pawlak.krzysiek.hotnail.R;
 
 public class LatestFragment extends Fragment {
 

@@ -1,8 +1,7 @@
-package com.pawlak.krzysiek.hotnail;
+package com.pawlak.krzysiek.hotnail.login;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,15 +20,14 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.pawlak.krzysiek.hotnail.MainActivity;
+import com.pawlak.krzysiek.hotnail.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 
 import static com.pawlak.krzysiek.hotnail.API_URL.SERVER;
 

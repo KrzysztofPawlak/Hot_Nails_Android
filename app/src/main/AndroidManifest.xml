@@ -25,7 +25,7 @@
             android:required="false" />
 
         <activity
-            android:name="com.pawlak.krzysiek.hotnail.LoginSignActivity"
+            android:name="com.pawlak.krzysiek.hotnail.login.LoginSignActivity"
             android:theme="@style/AppTheme.NoActionBar"
             android:label="@string/app_name">
 
@@ -38,13 +38,13 @@
         </activity>
 
         <activity
-            android:name="com.pawlak.krzysiek.hotnail.LatestActivity"
+            android:name="com.pawlak.krzysiek.hotnail.latest.LatestActivity"
             android:label="Latest"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
         <activity
-            android:name="com.pawlak.krzysiek.hotnail.DetailActivity"
+            android:name="com.pawlak.krzysiek.hotnail.detail.DetailActivity"
             android:label="@string/title_activity_detail"
             android:parentActivityName="com.pawlak.krzysiek.hotnail.ListActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -53,9 +53,9 @@
                 android:value="com.pawlak.krzysiek.hotnail.ListActivity" />
         </activity>
 
-        <activity android:name="com.pawlak.krzysiek.hotnail.PhotoActivity" />
+        <activity android:name="com.pawlak.krzysiek.hotnail.image.PhotoActivity" />
 
-        <activity android:name="com.pawlak.krzysiek.hotnail.Splash">
+        <activity android:name="com.pawlak.krzysiek.hotnail.login.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -69,13 +69,13 @@
         </activity>
 
         <activity
-            android:name="com.pawlak.krzysiek.hotnail.MyStats"
+            android:name="com.pawlak.krzysiek.hotnail.stats.MyStats"
             android:label="@string/title_activity_my_panel"
-            android:parentActivityName="com.pawlak.krzysiek.hotnail.LoginSignActivity"
+            android:parentActivityName="com.pawlak.krzysiek.hotnail.login.LoginSignActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.pawlak.krzysiek.hotnail.LoginSignActivity" />
+                android:value="com.pawlak.krzysiek.hotnail.login.LoginSignActivity" />
         </activity>
 
         <activity

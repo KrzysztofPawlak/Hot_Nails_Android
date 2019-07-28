@@ -1,4 +1,4 @@
-package com.pawlak.krzysiek.hotnail;
+package com.pawlak.krzysiek.hotnail.stats;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -27,6 +27,12 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.kosalgeek.android.json.JsonConverter;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.pawlak.krzysiek.hotnail.image.PhotoActivity;
+import com.pawlak.krzysiek.hotnail.Product;
+import com.pawlak.krzysiek.hotnail.R;
+import com.pawlak.krzysiek.hotnail.UILConfig;
+import com.pawlak.krzysiek.hotnail.login.LoginSignActivity;
+import com.pawlak.krzysiek.hotnail.testChart;
 
 import java.io.Serializable;
 import java.util.ArrayList;

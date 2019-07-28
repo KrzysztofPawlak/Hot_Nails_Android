@@ -11,6 +11,9 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
+import com.pawlak.krzysiek.hotnail.hot.HotFragment;
+import com.pawlak.krzysiek.hotnail.latest.LatestFragment;
+import com.pawlak.krzysiek.hotnail.stats.StatsFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 

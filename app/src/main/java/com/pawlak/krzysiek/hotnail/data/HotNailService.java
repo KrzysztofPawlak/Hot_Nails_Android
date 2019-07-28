@@ -1,4 +1,4 @@
-package com.pawlak.krzysiek.hotnail;
+package com.pawlak.krzysiek.hotnail.data;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;

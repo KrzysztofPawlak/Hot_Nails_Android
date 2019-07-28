@@ -1,4 +1,4 @@
-package com.pawlak.krzysiek.hotnail;
+package com.pawlak.krzysiek.hotnail.hot;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,6 +21,11 @@ import com.kosalgeek.android.json.JsonConverter;
 import com.kosalgeek.genasync12.AsyncResponse;
 import com.kosalgeek.genasync12.PostResponseAsyncTask;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.pawlak.krzysiek.hotnail.detail.DetailActivity;
+import com.pawlak.krzysiek.hotnail.image.PhotoActivity;
+import com.pawlak.krzysiek.hotnail.Product;
+import com.pawlak.krzysiek.hotnail.R;
+import com.pawlak.krzysiek.hotnail.UILConfig;
 
 import java.util.ArrayList;
 

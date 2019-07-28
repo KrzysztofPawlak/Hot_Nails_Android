@@ -1,4 +1,4 @@
-package com.pawlak.krzysiek.hotnail.model;
+package com.pawlak.krzysiek.hotnail.login.model;
 
 public class User {
 

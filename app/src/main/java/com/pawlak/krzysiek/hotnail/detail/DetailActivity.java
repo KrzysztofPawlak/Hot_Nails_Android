@@ -1,4 +1,4 @@
-package com.pawlak.krzysiek.hotnail;
+package com.pawlak.krzysiek.hotnail.detail;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -20,6 +20,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.nostra13.universalimageloader.core.ImageLoader;
+import com.pawlak.krzysiek.hotnail.API_URL;
+import com.pawlak.krzysiek.hotnail.Product;
+import com.pawlak.krzysiek.hotnail.R;
+import com.pawlak.krzysiek.hotnail.UILConfig;
 
 import java.util.HashMap;
 import java.util.Map;

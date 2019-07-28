@@ -1,4 +1,4 @@
-package com.pawlak.krzysiek.hotnail;
+package com.pawlak.krzysiek.hotnail.image;
 
 import android.content.Context;
 import android.content.Intent;
@@ -29,6 +29,8 @@ import com.kosalgeek.android.photoutil.GalleryPhoto;
 import com.kosalgeek.android.photoutil.ImageBase64;
 import com.kosalgeek.android.photoutil.ImageLoader;
 import com.kosalgeek.android.photoutil.PhotoLoader;
+import com.pawlak.krzysiek.hotnail.MyCommand;
+import com.pawlak.krzysiek.hotnail.R;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;

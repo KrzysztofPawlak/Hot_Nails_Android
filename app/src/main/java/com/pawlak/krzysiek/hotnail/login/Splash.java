@@ -1,4 +1,4 @@
-package com.pawlak.krzysiek.hotnail;
+package com.pawlak.krzysiek.hotnail.login;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,6 +6,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.widget.Toast;
+
+import com.pawlak.krzysiek.hotnail.data.HotNailService;
+import com.pawlak.krzysiek.hotnail.MainActivity;
+import com.pawlak.krzysiek.hotnail.R;
 
 import org.json.JSONObject;
 
