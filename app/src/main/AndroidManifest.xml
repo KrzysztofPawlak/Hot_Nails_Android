@@ -38,12 +38,6 @@
         </activity>
 
         <activity
-            android:name="com.pawlak.krzysiek.hotnail.latest.LatestActivity"
-            android:label="Latest"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-
-        <activity
             android:name="com.pawlak.krzysiek.hotnail.detail.DetailActivity"
             android:label="@string/title_activity_detail"
             android:parentActivityName="com.pawlak.krzysiek.hotnail.ListActivity"
