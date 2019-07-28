@@ -51,7 +51,7 @@ public class PhotoActivity extends AppCompatActivity {
     ByteArrayOutputStream bytearrayoutputstream; // for compress
     ArrayList<String> imageList = new ArrayList<>();
 
-    private static final String URL = SERVER + "/upload.php";
+    private static final String URL = SERVER + "upload.php";
 
     String selectedPhoto;
 
@@ -141,6 +141,8 @@ public class PhotoActivity extends AppCompatActivity {
                     }, new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
+                            // TODO: what if offline?
+                            System.out.println(error.fillInStackTrace());
                             Snackbar snackbar = Snackbar
                                     .make(coordinatorLayout, "error", Snackbar.LENGTH_LONG);
                             snackbar.show();
