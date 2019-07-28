@@ -7,15 +7,8 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.widget.Toast;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.pawlak.krzysiek.hotnail.model.User;
-
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,15 +23,17 @@ import static com.pawlak.krzysiek.hotnail.API_URL.SERVER;
 public class Splash extends Activity {
 
     boolean flaga;
-    private RequestQueue requestQueue;
-    private static final String URL = SERVER + "user_control.php";
-    private StringRequest request;
     private HotNailService hotNailService;
+    private SharedPreferences getPrefs;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash);
+
+        getPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
+        final String email = getPrefs.getString("email", "empty");
+        final String password = getPrefs.getString("password", "empty");
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(SERVER)
@@ -47,53 +42,47 @@ public class Splash extends Activity {
 
         hotNailService = retrofit.create(HotNailService.class);
 
-            SharedPreferences getPrefs = PreferenceManager
-            .getDefaultSharedPreferences(this);
-    SharedPreferences.Editor checkbox = getPrefs.edit();
-
-        requestQueue = Volley.newRequestQueue(this);
-
-        Thread timer = new Thread(){
-            public void run(){
-                try{
+        // TODO: split login and registration
+        Thread timer = new Thread() {
+            public void run() {
+                try {
                     sleep(3000);
-
                     synchronized (this) {
                         while (flaga) {
                             wait();
                         }
                     }
-                } catch (InterruptedException e){
+                } catch (InterruptedException e) {
                     e.printStackTrace();
-                } finally{
-                    loginAlready();
-                    finish();
-
+                } finally {
+                    if (checkIsLogOut(email, password)) {
+                        Intent intent = new Intent(Splash.this, LoginSignActivity.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        loginAlready(email, password);
+                        finish();
+                    }
                 }
             }
         };
         timer.start();
     }
 
-    public void loginAlready() { // checking log in/out from pref
+    private boolean checkIsLogOut(final String email, final String password) {
+        return email.contains("empty") && password.contains("empty");
+    }
 
-        // take email and password from pref
-        SharedPreferences getPrefs = PreferenceManager.getDefaultSharedPreferences(getBaseContext());
-        final String email = getPrefs.getString("email", "empty");
-        final String password = getPrefs.getString("password", "empty");
-
-        User user = new User(email, password);
-
+    public void loginAlready(final String email, final String password) {
         Map<String, String> fields = new HashMap<>();
         fields.put("email", email);
         fields.put("password", password);
 
         Call<ResponseBody> call = hotNailService.logIn(email, password);
-
         call.enqueue(new Callback<ResponseBody>() {
             @Override
             public void onResponse(Call<ResponseBody> call, retrofit2.Response<ResponseBody> response) {
-                if(response.isSuccessful()) {
+                if (response.isSuccessful()) {
                     try {
                         String result = response.body().string();
                         JSONObject jsonObject = new JSONObject(result);
@@ -103,14 +92,11 @@ public class Splash extends Activity {
                             startActivity(intent);
                             finish();
                         } else {
-                            System.out.println("login");
                             Intent intent = new Intent(Splash.this, LoginSignActivity.class);
                             startActivity(intent);
                             finish();
                         }
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (JSONException e) {
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                 }
@@ -118,24 +104,20 @@ public class Splash extends Activity {
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
-
+                // TODO: do something better
+                Intent intent = new Intent(Splash.this, MainActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
 
-    private void savePreferences(String key, String value) {
-        SharedPreferences sharedPreferences = PreferenceManager
-                .getDefaultSharedPreferences(this);
-        SharedPreferences.Editor checkbox = sharedPreferences.edit();
-        checkbox.putString(key, value);
-        checkbox.commit();
-    }
-
     // back button
     int backButtonCount;
+
     @Override
     public void onBackPressed() {
-        if(backButtonCount >= 1) {
+        if (backButtonCount >= 1) {
             finish();
         } else {
             Toast.makeText(this, "Przyciśnij przycisk jeszcze raz aby wyjść z aplikacji.", Toast.LENGTH_SHORT).show();
