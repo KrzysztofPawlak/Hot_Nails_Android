@@ -76,7 +76,6 @@ public class HotFragment extends Fragment implements AsyncResponse, AdapterView.
         productsList = new JsonConverter<Product>().toArrayList(s, Product.class);
 
         dict = new BindDictionary<>();
-
         dict.addStringField(R.id.tvRate, (product, position) -> {
             String a = "" + product.avg;
             if (a.contains("null")) {
@@ -85,7 +84,6 @@ public class HotFragment extends Fragment implements AsyncResponse, AdapterView.
             String b = a.substring(0, 3);
             return b + " / 5.0";
         });
-
         dict.addDynamicImageField(R.id.ivImage, (product, position) -> product.url, (url, imageView) -> {
             ImageLoader.getInstance().displayImage(url, imageView);
             imageView.setPadding(0, 0, 0, 0);
@@ -95,7 +93,7 @@ public class HotFragment extends Fragment implements AsyncResponse, AdapterView.
 
         Fragment currentFragment = getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_container);
         if (currentFragment instanceof HotFragment) {
-            FragmentTransaction fragTransaction =   (getActivity()).getSupportFragmentManager().beginTransaction();
+            FragmentTransaction fragTransaction = (getActivity()).getSupportFragmentManager().beginTransaction();
             fragTransaction.detach(currentFragment);
             fragTransaction.attach(currentFragment);
             fragTransaction.commit();

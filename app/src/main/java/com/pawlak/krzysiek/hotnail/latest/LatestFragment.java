@@ -96,7 +96,7 @@ public class LatestFragment extends Fragment implements AsyncResponse, AdapterVi
 
         Fragment currentFragment = getActivity().getSupportFragmentManager().findFragmentById(R.id.fragment_container);
         if (currentFragment instanceof LatestFragment) {
-            FragmentTransaction fragTransaction =   (getActivity()).getSupportFragmentManager().beginTransaction();
+            FragmentTransaction fragTransaction = (getActivity()).getSupportFragmentManager().beginTransaction();
             fragTransaction.detach(currentFragment);
             fragTransaction.attach(currentFragment);
             fragTransaction.commit();
